@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>词频与例句演示</title>
+<style>body{max-width:760px;margin:60px auto;padding:24px;font:17px/1.8 system-ui;background:#eef4fa;color:#243b53}.el-dialog{background:white;padding:28px;border-radius:16px}.label{color:#62788c}button{padding:10px 18px;border:0;border-radius:8px;background:#236baa;color:white;cursor:pointer}</style>
+<h1>词频与例句 · 合成数据演示</h1><p>点击查询，实际脚本会从模拟 fetch 响应生成面板。</p><button id="query">查询 hello</button>
+<div class="el-dialog"><h2 class="text-theme font-semibold">hello</h2><p>划词后立即翻译</p><p class="label">阅读 ** 次 · 听力 ** 次 · 答案词 ** 次 · 概率 **%</p><p>原页面内容保留，统计面板独立展示。</p></div>
+<script>
+window.fetch = async () => ({ok:true,clone:()=>({json:async()=>({values:{word:'hello',word_real:'hello',word_fenbu_v4:{yuedu_count:11,daanci_count:33,jjColors:{sample:{count:22}},test_count:3,test_total:4,details:{hello:[{name:'Synthetic reading',part:'Example 1',text:'Hello! This sentence is a synthetic example for the portfolio.'}]}}}})})});
+</script><script src="../word-frequency-examples.user.js"></script><script>
+document.querySelector('#query').addEventListener('click', () => fetch('/article/v1/word/search'));
+</script></html>
